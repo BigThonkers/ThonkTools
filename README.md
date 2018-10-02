@@ -56,3 +56,5 @@ Imports ufloat, unumpy as unp, numpy as np, matplotlib.pyplot as plt, curve_fit 
 ## Installation
 
 $ pip install .
+
+You can also just put this in the right directory.
