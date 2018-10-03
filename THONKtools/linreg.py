@@ -1,4 +1,4 @@
-def linreg(xfit,xarr,yarr,markeraus='-',grenz=True,markergrenz='--',color='orange',labelaus='Lineare Regression',labelgrenz=None,unumpy=False,first=0,last=-1,xnum=100,xfitrestrictl=None,xfitrestrictr=None,yfitrestrictl=None,yfitrestrictr=None):
+def linreg(xarr,yarr,markeraus='-',grenz=True,markergrenz='--',color='orange',labelaus='Lineare Regression',labelgrenz=None,unumpy=False,first=0,last=-1,xnum=100,xfitrestrictl=None,xfitrestrictr=None,yfitrestrictl=None,yfitrestrictr=None):
     def fitfunc(x,a,b):
         return a*x+b
     import numpy as np
