@@ -27,7 +27,8 @@ Most functions only require basic Python and numpy. Linear regression additional
 
 Simple linear regression function that utilizes outputs from scipy.optimize's curve_fit and plots the result with matplotlib.pyplot's plot. Uses a*x+b as its fit function. Use unumpy=True if the xarr and yarr arrays are uarrays.
 
----linreg(xarr,yarr,markeraus='-',grenz=True,markergrenz='--',color='orange',labelaus='Lineare Regression',labelgrenz=None,unumpy=False,first=0,last=-1,xnum=100,xfitrestrictl=None,xfitrestrictr=None,yfitrestrictl=None,yfitrestrictr=None,subplot=None)
+---python
+linreg(xarr,yarr,markeraus='-',grenz=True,markergrenz='--',color='orange',labelaus='Lineare Regression',labelgrenz=None,unumpy=False,first=0,last=-1,xnum=100,xfitrestrictl=None,xfitrestrictr=None,yfitrestrictl=None,yfitrestrictr=None,subplot=None)
 ---
 
 ### mean
