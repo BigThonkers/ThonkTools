@@ -3,6 +3,7 @@ def linreg(xarr,yarr,markeraus='-',grenz=True,markergrenz='--',color='orange',la
         return a*x+b
     import numpy as np
     import matplotlib.pyplot as plt
+    from scipy.optimize import curve_fit
     if unumpy == True:
         from uncertainties import unumpy as unp
         xfit=np.linspace(unp.nominal_values(xarr)[first],unp.nominal_values(xarr)[last],xnum)
