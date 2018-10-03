@@ -31,6 +31,24 @@ Simple linear regression function that utilizes outputs from scipy.optimize's cu
 linreg(xarr,yarr,markeraus='-',grenz=True,markergrenz='--',color='orange',labelaus='Lineare Regression',labelgrenz=None,unumpy=False,first=0,last=-1,xnum=100,xfitrestrictl=None,xfitrestrictr=None,yfitrestrictl=None,yfitrestrictr=None,subplot=None)
 ````
 
+xarr and yarr are the input arrays. By default, these are parsed as lists. If unumpy is set to True, unp.nominal_values will be used.
+
+markeraus sets the marker used for the linear regression.
+
+grenz sets whether or not Grenzgeraden (I can't figure out the English term) should be used.
+
+markergrenz sets the marker used for the Grenzgeraden.
+
+color sets the color used by both the Grenzgeraden and the Ausgleichsgerade.
+
+labelaus and labelgrenz set the labels for the Ausgleichs- and Grenzgeraden.
+
+first and last set how much of the xarr should be used in the end.
+
+xnum sets the size of the array used for fitting. The default, 100, is already overkill, since this is just a straight line.
+
+x/yfitrestrictl/r are restrictions for curve_fit.
+
 ### mean
 
 Simply calculates the sum of an array over its length.
