@@ -1,4 +1,4 @@
-def linreg(xarr,yarr,markeraus='-',grenz=True,markergrenz='--',color='orange',labelaus='Lineare Regression',labelgrenz=None,unumpy=False,first=0,last=-1,xnum=100,xfitrestrictl=None,xfitrestrictr=None,yfitrestrictl=None,yfitrestrictr=None):
+def linreg(xarr,yarr,markeraus='-',grenz=True,markergrenz='--',color='orange',labelaus='Lineare Regression',labelgrenz=None,unumpy=False,first=0,last=-1,xnum=100,xfitrestrictl=None,xfitrestrictr=None,yfitrestrictl=None,yfitrestrictr=None,subplot=None):
     def fitfunc(x,a,b):
         return a*x+b
     import numpy as np
@@ -17,8 +17,15 @@ def linreg(xarr,yarr,markeraus='-',grenz=True,markergrenz='--',color='orange',la
     d=np.sqrt(np.diag(pcov))[1]
     dfit1=(a+c)*(xfit)+(b-d)
     dfit2=(a-c)*(xfit)+(b+d)
-    plt.plot(xfit,fit,markeraus,color=color,label=labelaus)
-    if grenz == True:
-        plt.plot(xfit,dfit1,markergrenz,color=color,label=labelgrenz)
-        plt.plot(xfit,dfit2,markergrenz,color=color,label=labelgrenz)
+    if subplot==None:
+        plt.plot(xfit,fit,markeraus,color=color,label=labelaus)
+    else:
+        subplot.plot(xfit,fit,markeraus,color=color,label=labelaus)
+    if grenz==True:
+        if subplot==None:
+            plt.plot(xfit,dfit1,markergrenz,color=color,label=labelgrenz)
+            plt.plot(xfit,dfit2,markergrenz,color=color,label=labelgrenz)
+        else:
+            subplot.plot(xfit,dfit1,markergrenz,color=color,label=labelgrenz)
+            subplot.plot(xfit,dfit2,markergrenz,color=color,label=labelgrenz)
     return
