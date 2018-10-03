@@ -10,7 +10,7 @@ def linreg(xarr,yarr,markeraus='-',grenz=True,markergrenz='--',color='orange',la
         popt,pcov=curve_fit(fitfunc,unp.nominal_values(xarr)[xfitrestrictl:xfitrestrictr],unp.nominal_values(yarr)[yfitrestrictl:yfitrestrictr])
     else:
         xfit=np.linspace(xarr[first],xarr[last],xnum)
-        popt,pcov=curve_fit(fitfunc,xarr[xfitrestrict:xfitrestrictr],yarr[yfitrestrictl:yfitrestrictr])
+        popt,pcov=curve_fit(fitfunc,xarr[xfitrestrictl:xfitrestrictr],yarr[yfitrestrictl:yfitrestrictr])
     a,b=popt
     fit=a*xfit+b
     c=np.sqrt(np.diag(pcov))[0]
