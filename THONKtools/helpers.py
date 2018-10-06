@@ -9,11 +9,11 @@ def omega(T):
 '''
 Calculate linear regression for polynomial a*x+b
 '''
-def a(x,y):
+def b(x,y):
 	n=len(x)
 	return (sum(x**2)*sum(y)-sum(x)*sum(x*y))/(n*sum(x**2)-(sum(x))**2)
 
-def b(x,y):
+def a(x,y):
 	n=len(x)
 	return (n*sum(x*y)-sum(x)*sum(y))/(n*sum(x**2)-(sum(x))**2)
 
