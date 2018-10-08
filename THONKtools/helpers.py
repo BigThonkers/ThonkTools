@@ -25,12 +25,12 @@ def s(x,y):
 	import numpy as np
 	return np.sqrt((1/(n-2))*sum((y-a(x,y)-b(x,y)*x)**2))
 
-def Db(x):
+def Db(x,y):
 	n=len(x)
 	import numpy as np
 	return s(x,y)*np.sqrt(sum(x**2)/(n*sum(x**2)-(sum(x))**2))
 
-def Da(x):
+def Da(x,y):
 	n=len(x)
 	import numpy as np
 	return s(x,y)*np.sqrt(n/(n*sum(x**2)-(sum(x))**2))
