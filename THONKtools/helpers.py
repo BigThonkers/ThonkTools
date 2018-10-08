@@ -23,7 +23,7 @@ Calculate uncertainties for the above functions
 def s(x,y):
 	n=len(x)
 	import numpy as np
-	return np.sqrt((1/(n-2))*sum((y-a(x,y)-b(x,y)*x)**2))
+	return np.sqrt((1/(n-2)*sum((y-a(x,y)-b(x,y)*x)**2)))
 
 def Db(x,y):
 	n=len(x)
