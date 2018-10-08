@@ -28,4 +28,4 @@ def linreg(xarr,yarr,markeraus='-',grenz=True,markergrenz='--',color='orange',la
         else:
             subplot.plot(xfit,dfit1,markergrenz,color=color,label=labelgrenz)
             subplot.plot(xfit,dfit2,markergrenz,color=color,label=labelgrenz)
-    return
+    return a,b,c,d=[a,b,c,d]
