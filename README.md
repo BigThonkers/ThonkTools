@@ -59,7 +59,7 @@ Turns a periodic time into angular frequency.
 
 ### a, b, s, Da, Db
 
-Calculate linear regression by hand. Requires x and y inputs.
+Calculate linear regression "by hand". Requires x and y inputs. Getting the values from pyplot is probably faster, but at least you know exactly what's being done in this case.
 
 ### t
 
