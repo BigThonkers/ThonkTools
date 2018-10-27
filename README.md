@@ -69,10 +69,6 @@ Find out if values are good or not. Optimal values are t < 2.
 
 Calculate uncertainty for certain devices. I don't know what this is for exactly.
 
-### impfunc
-
-Imports ufloat, unumpy as unp, numpy as np, matplotlib.pyplot as plt, curve_fit from scipy.optimize, and pandas as pd.
-
 ## Installation
 
 $ pip install .
