@@ -19,7 +19,7 @@ Hat tip to my m'lady
 
 ## Dependencies
 
-Most functions only require basic Python and numpy. Linear regression additionally requires matplotlib.pyplot and scipy.optimize. Ideally, one should also have uncertainties installed. The import function also imports Pandas.
+Most functions only require basic Python and numpy. Linear regression additionally requires matplotlib.pyplot and scipy.optimize. Ideally, one should also have uncertainties installed. Upcoming csvtex function may require pandas.
 
 ## Functions
 
