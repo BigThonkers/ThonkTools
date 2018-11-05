@@ -48,15 +48,3 @@ Uncertainty for time for certain devices. Apparently.
 def s_t(t,n):
 	import numpy as np
 	return (sum(t)/len(t))/np.sqrt(n)
-	
-'''
-Import lots of stuff.
-'''
-def impfunc():
-	from uncertainties import ufloat
-	from uncertainties import unumpy as unp
-	import numpy as np
-	import matplotlib.pyplot as plt
-	from scipy.optimize import curve_fit
-	import pandas as pd
-	return
