@@ -10,9 +10,9 @@ New versions of the functions will be available as soon as they're pushed. This 
 
 ## Authors
 
-* **Some weeaboo**
-* **That weeaboo's waifu**
+* **Some weed**
 * **Justin Pieber**
+* **This total nerd**
 
 ## Acknowledgments
 
@@ -20,7 +20,7 @@ Hat tip to my m'lady
 
 ## Dependencies
 
-Most functions only require basic Python and numpy. Linear regression additionally requires matplotlib.pyplot and scipy.optimize. Ideally, one should also have uncertainties installed. Upcoming csvtex function may require pandas.
+Most functions only require basic Python and numpy. Linear regression additionally requires matplotlib.pyplot and scipy.optimize. Ideally, one should also have uncertainties installed. Every function should also be usable without uncertainties. 
 
 ## Functions
 
@@ -86,3 +86,5 @@ Step by step instructions to solving coupled systems of non-linear inhomogeneous
 $ pip install .
 
 You can also just put this in the right directory.
+
+
