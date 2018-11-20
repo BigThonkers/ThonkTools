@@ -15,7 +15,7 @@ Formatting (as above)
 Index column option
 '''
 
-def csvtex(filename,form=None,index=None,line_break=True,dec_comma=False):
+def csvtex(filename,style=None,index=None,line_break=True,dec_comma=False):
     if line_break==False:
         with open (filename) as data:
             data=data.read().replace(',','.').replace('\n',' \\\\ ').replace('   ',' & ')[:-4]
