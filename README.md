@@ -10,7 +10,8 @@ New versions of the functions will be available as soon as they're pushed. This 
 
 ## Authors
 
-* **Some weed**
+* **Some weeb**
+* **That weeaboo's waifu**
 * **Justin Pieber**
 * **This total nerd**
 
