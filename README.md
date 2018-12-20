@@ -55,6 +55,14 @@ x/yfitrestrictl/r are restrictions for curve_fit.
 
 Simply calculates the sum of an array over its length.
 
+### meanDeviation
+
+Computes the mean deviation of a given list.
+
+### gewMitt
+
+Weighted mean calculation.  Requires input of both nominal values and uncertainties.
+
 ### omega
 
 Turns a periodic time into angular frequency.
