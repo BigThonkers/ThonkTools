@@ -11,7 +11,7 @@ def csvtex(fname,caption,index=None):
 
 '''
 TODO: 
-Formatting (as above)
+Finish styling
 Index column option
 '''
 
@@ -26,7 +26,14 @@ def csvtex(filename,style=None,index=None,line_break=True,dec_comma=False):
         data=data.replace('.',',')
     print(data)
     return
-
+## Column counter for styling
+#    linelength = zip(data, data[1:]).index(('\\', '\\'))
+#    i, j = -1, -3
+#    while i + 1 != j:
+#        i = data.index('\\')
+#        j = data[i:].index('\\')
+#
+#    columncount = len([x for x in data[:linelength] if x == '&']) + 1
 '''
 This function will convert arrays to LaTeX tables. Same options as above.
 '''
