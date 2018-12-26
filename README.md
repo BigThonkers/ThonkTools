@@ -88,7 +88,7 @@ Calculate uncertainty for certain devices. I don't know what this is for exactly
 ````python
 csvtex(filename,style=None,caption="CAPTION",label="Tab:X",index=None,line_break=True,dec_comma=False)
 ````
-Filename is obvious. Formatting has yet to be added (and may be renamed to "style"), but options should be None and 'nutrition'. Index has yet to be implemented, but will add an index column. Line break is self-explanatory; True means after every \\ a new line will be done. Decimal comma changes every decimal point to a comma. Off by default.
+Takes a csv file and outputs code for a LaTeX table. More in depth explanation can be found in ThonkTools/csvtex.py.
 
 ### hi
 
