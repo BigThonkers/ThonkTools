@@ -11,31 +11,37 @@ def csvtex(fname,caption,index=None):
 
 '''
 TODO: 
-Finish styling
 Index column option
 '''
-
-def csvtex(filename,style=None,index=None,line_break=True,dec_comma=False):
+def csvtex(filename,style=None,caption="CAPTION",label="Tab:X",index=None,line_break=True,dec_comma=False):
     if line_break==False:
         with open (filename) as data:
-            data=data.read().replace(',','.').replace('\n',' \\\\ ').replace('   ',' & ')[:-4]
+            data=data.read().replace(',','.').replace('\n',' \\\\ ').replace('\t',' & ')[:-4]
     elif line_break==True:
         with open (filename) as data:
-            data=data.read().replace(',','.').replace('\n',' \\\\\n').replace('   ',' & ')[:-4]
+            data=data.read().replace(',','.').replace('\n',' \\\\\n').replace('\t',' & ')[:-4]
     if dec_comma==True:
-        data=data.replace('.',',')
-    print(data)
-    return
-## Column counter for styling
-#    linelength = zip(data, data[1:]).index(('\\', '\\'))
-#    i, j = -1, -3
-#    while i + 1 != j:
-#        i = data.index('\\')
-#        j = data[i:].index('\\')
-#
-#    columncount = len([x for x in data[:linelength] if x == '&']) + 1
+            data=data.replace('.',',')
+    if style == "nutrition":
+        linelength = list(zip(data, data[1:])).index(('\\', '\\'))
+        columncount = ['c' for x in data[:linelength] if x == '&'] + ['c']
+        print("\\begin{table}[h]\n\\caption{" 
+              + caption + 
+              "}\\vspace{11pt}\n\\begin{tabular}{"
+              + ''.join(columncount) + 
+              "}\n\\toprule\n","\\textrm\{XXXX\}/\\textrm\{XX\}"*len(columncount) + 
+              "\\\\\n\\midrule\n" 
+              + data +
+              "\n\\bottomrule\n\\end{tabular}\n\\label{"
+              + label + 
+              "}\n\\end{table}")
+        return
+    else:
+        print(data)
+        return
+
 '''
-This function will convert arrays to LaTeX tables. Same options as above.
+This function will convert arrays to LaTeX tables if I ever finish it. Same options as above.
 '''
 
 def arrtex(filename):
