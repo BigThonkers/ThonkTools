@@ -88,7 +88,7 @@ Calculate uncertainty for certain devices. I don't know what this is for exactly
 ````python
 csvtex(filename,style=None,caption="CAPTION",label="Tab:X",index=None,line_break=True,dec_comma=False)
 ````
-Takes a csv file and outputs code for a LaTeX table. More in depth explanation can be found in ThonkTools/csvtex.py.
+Takes a csv file and outputs code for a LaTeX table. More in depth explanation can be found in ThonkTools/textools.py.
 
 ### hi
 
