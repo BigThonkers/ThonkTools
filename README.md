@@ -55,9 +55,13 @@ x/yfitrestrictl/r are restrictions for curve_fit.
 
 Simply calculates the sum of an array over its length.
 
-### meanDeviation
+### meanDeviation and meandev
 
-Computes the mean deviation of a given list.
+Computes the mean deviation of a given list. The latter allows entering a unumpy uarray with uncertainties=True.
+
+### nmean
+
+Combines mean and meandev to output one ufloat. Input can be uarray with uncertainties=True, but output will always be a ufloat.
 
 ### gewMitt
 
