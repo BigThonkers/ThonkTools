@@ -1,4 +1,4 @@
-"""This here was my attempt at doing this with Pandas. Seemed to complex to me, though.
+"""This here was my attempt at doing this with Pandas. Seemed too complex to me, though.
 
 def csvtex(fname,caption,index=None):
     import pandas as pd
