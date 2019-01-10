@@ -81,15 +81,20 @@ def csvtex(filename:str,style=None,caption="CAPTION",label="Tab:X",index=None,li
         return
 
 '''
-This function will convert arrays to LaTeX tables if I ever finish it. Same options as above.
+Tool to convert lists, arrays, and uarrays to LaTeX code. Very few options now, and chaining these isn't really easy.
 '''
-
-def arrtex(filename):
-    return
-
-
-
-
-
-
-
+def arrtex(array, row=True, column=False):
+    if row == True and column == False:
+        conv = str(array)
+        if '+' in conv:
+            out = conv.replace(' ',' & ').strip('[]').replace('+/-',' \\pm ')
+        else:
+            out = conv.replace(' ',' & ').strip('[]')
+        return print(out)
+    elif row == False or column == True:
+        conv = str(array)
+        if '+' in conv:
+            out = conv.replace(' ',' \\\\ ').strip('[]').replace('+/-',' \\pm ')
+        else:
+            out = conv.replace(' ',' \\\\ ').strip('[]')
+        return print(out)
