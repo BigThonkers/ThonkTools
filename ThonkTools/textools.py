@@ -8,7 +8,6 @@ def csvtex(fname,caption,index=None):
     print(data.iat[0,0],'&',data.iat[1,0],'\n\hline')
     print('\\bottomrule\n\end{{tabular}}\n\label{{Tab:{0}}}\n\end{{table}}'.format(tabnum))"""
 
-
 '''
 Takes a csv file and outputs it as LaTeX code for use in a LaTeX table.
 
@@ -53,48 +52,53 @@ Example:
 TODO: 
 Index column option
 '''
-def csvtex(filename:str,style=None,caption="CAPTION",label="Tab:X",index=None,line_break=True,dec_comma=False):
-    if line_break==False:
-        with open (filename) as data:
-            data=data.read().replace(',','.').replace('\n',' \\\\ ').replace('\t',' & ')[:-4]
-    elif line_break==True:
-        with open (filename) as data:
-            data=data.read().replace(',','.').replace('\n',' \\\\\n').replace('\t',' & ')[:-4]
-    if dec_comma==True:
-            data=data.replace('.',',')
+
+
+def csvtex(filename: str, style=None, caption="CAPTION", label="Tab:X", index=None, line_break=True, dec_comma=False):
+    if line_break == False:
+        with open(filename) as data:
+            data = data.read().replace(',', '.').replace('\n', ' \\\\ ').replace('\t', ' & ')[:-4]
+    elif line_break == True:
+        with open(filename) as data:
+            data = data.read().replace(',', '.').replace('\n', ' \\\\\n').replace('\t', ' & ')[:-4]
+    if dec_comma == True:
+        data = data.replace('.', ',')
     if style == "nutrition":
         linelength = list(zip(data, data[1:])).index(('\\', '\\'))
         columncount = ['c' for x in data[:linelength] if x == '&'] + ['c']
-        print("\\begin{table}[h]\n\\caption{" 
-              + caption + 
+        print("\\begin{table}[h]\n\\caption{"
+              + caption +
               "}\\vspace{11pt}\n\\begin{tabular}{"
-              + ''.join(columncount) + 
-              "}\n\\toprule\n","\\textrm\{XXXX\}/\\textrm\{XX\}"*len(columncount) + 
-              "\\\\\n\\midrule\n" 
+              + ''.join(columncount) +
+              "}\n\\toprule\n", "\\textrm\{XXXX\}/\\textrm\{XX\}" * len(columncount) +
+              "\\\\\n\\midrule\n"
               + data +
               "\n\\bottomrule\n\\end{tabular}\n\\label{"
-              + label + 
+              + label +
               "}\n\\end{table}")
         return
     else:
         print(data)
         return
 
+
 '''
 Tool to convert lists, arrays, and uarrays to LaTeX code. Very few options now, and chaining these isn't really easy.
 '''
+
+
 def arrtex(array, row=True, column=False):
     if row == True and column == False:
         conv = str(array)
         if '+' in conv:
-            out = conv.replace(' ',' & ').strip('[]').replace('+/-',' \\pm ')
+            out = conv.replace(' ', ' & ').strip('[]').replace('+/-', ' \\pm ')
         else:
-            out = conv.replace(' ',' & ').strip('[]')
+            out = conv.replace(' ', ' & ').strip('[]')
         return print(out)
     elif row == False or column == True:
         conv = str(array)
         if '+' in conv:
-            out = conv.replace(' ',' \\\\ ').strip('[]').replace('+/-',' \\pm ')
+            out = conv.replace(' ', ' \\\\ ').strip('[]').replace('+/-', ' \\pm ')
         else:
-            out = conv.replace(' ',' \\\\ ').strip('[]')
+            out = conv.replace(' ', ' \\\\ ').strip('[]')
         return print(out)
