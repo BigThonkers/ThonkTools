@@ -88,7 +88,7 @@ Calculate uncertainty for certain devices. I don't know what this is for exactly
 ### csvtex
 
 ````python
-csvtex(filename,style=None,caption="CAPTION",label="Tab:X",index=None,line_break=True,dec_comma=False)
+csvtex(filename: str, style=None, caption="CAPTION", label="Tab:X", index=None, line_break=True, dec_comma=False):
 ````
 Takes a csv file and outputs code for a LaTeX table. More in depth explanation can be found in ThonkTools/textools.py.
 
@@ -97,9 +97,9 @@ Takes a csv file and outputs code for a LaTeX table. More in depth explanation c
 Step by step instructions to solving coupled systems of non-linear inhomogeneous differential equations.
 
 ## Installation
-
+``` sh
 $ pip install .
-
+```
 You can also just put this in the right directory.
 
 
