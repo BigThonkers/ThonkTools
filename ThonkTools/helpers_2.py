@@ -4,8 +4,7 @@ Functions to help with Physics Lab. Some of them Require numpy.
 @author: erik_
 """
 
-% pylab
-inline
+#%pylab inline
 
 
 def LRoG(list: xx, list: yy) -> list:
