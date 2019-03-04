@@ -7,7 +7,7 @@ Functions to help with Physics Lab. Some of them Require numpy.
 #%pylab inline
 
 
-def LRoG(list: xx, list: yy) -> list:
+def LRoG(xx: list, yy:list) -> list:
     """Linear Regression, unweighted"""
     n = len(xx)
     x = np.array(xx)
@@ -30,7 +30,7 @@ def LRoG(list: xx, list: yy) -> list:
     return a, b, ua, ub
 
 
-def LRmG(list: x, list: y, list: u) -> list:
+def LRmG(x: list , y: list, u: list) -> list:
     """Linear Regression, weighted.
     
     """
@@ -62,13 +62,13 @@ def LRmG(list: x, list: y, list: u) -> list:
         return LRmG(x, y, ones(len(y)) * u)
 
 
-def meanDeviation(list: x):
+def meanDeviation(x: list):
     """Computes the mean deviation of a given list."""
     m = mean(x)
     return sqrt((1 / (len(x) - 1)) * sum((x - m) ** 2)) / sqrt(len(x))
 
 
-def gewMitt(list: x, list: ux):
+def gewMitt(x: list, ux: list):
     """returns the weighted mean. Input are two lists of equal lengh:
             the Values and the uncertainties """
     if len(x) != len(ux):
@@ -98,12 +98,12 @@ def line(x, a, b):
     return (a) + multiply((b), (x))
 
 
-def drawLine(x, list: a):
+def drawLine(x, a: list):
     """helper to plot a line from a list"""
     return line(x, a[0], a[1])
 
 
-def lineinfo(list: a, e=5, r=5):
+def lineinfo(a: list, e=5, r=5):
     """returns the params of a Lineplot (listform)"""
     print("{0}\t{1}\t{2}\t{3}".format(round(a[0], e), round(a[1], e), round(a[2], r), round(a[3], r)))
 
