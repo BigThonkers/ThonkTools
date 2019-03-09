@@ -64,3 +64,23 @@ Uncertainty for time for certain devices. Apparently.
 def s_t(t, n):
     import numpy as np
     return (sum(t) / len(t)) / np.sqrt(n)
+
+
+'''
+Weighted mean. Stolen from Erik's helpers_2.py
+'''
+
+
+def wmean(x, ux):
+    if len(x) != len(ux):
+        raise ValueError("Nominal value and uncertainties must be of same length.")
+    else:
+        g = []
+        for i in range(len(ux)):
+            g.append(1 / (ux[i] ** 2))
+        g = np.array(g)
+        x = np.array(x)
+        xg = sum(g * x) / sum(g)
+        uxg = 1 / sqrt(sum(g))
+        return xg, uxg
+
