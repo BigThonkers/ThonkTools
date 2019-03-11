@@ -14,6 +14,7 @@ New versions of the functions will be available as soon as they're pushed. This 
 * **That weeaboo's waifu**
 * **Justin Pieber**
 * **This total nerd**
+* **Some furry**
 
 ## Acknowledgments
 
