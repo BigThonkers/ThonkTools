@@ -98,8 +98,9 @@ Step by step instructions to solving coupled systems of non-linear inhomogeneous
 
 ## Installation
 ``` sh
+$ git clone https://github.com/BigThonkers/ThonkTools.git
+$ cd ThonkTools
 $ pip install .
 ```
-You can also just put this in the right directory.
-
-
+You can also just put this in the right directory. I've yet to put this in pip's repository.
+Windows users can place the ThonkTools folder in appdata > Local > Programs > Python3.7 > site-packages or something like that.
