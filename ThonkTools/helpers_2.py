@@ -2,6 +2,7 @@
 """
 Functions to help with Physics Lab. Some of them Require numpy.
 @author: erik_
+@author: damian_
 """
 
 #%pylab inline
