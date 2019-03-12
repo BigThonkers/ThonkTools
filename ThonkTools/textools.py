@@ -78,8 +78,7 @@ def csvtex(filename: str, style=None, caption="CAPTION", label="Tab:X", index=No
               "}\n\\end{table}")
         return
     else:
-        print(data)
-        return
+        return data
 
 
 '''
@@ -101,4 +100,4 @@ def arrtex(array, row=True, column=False):
             out = conv.replace(' ', ' \\\\ ').strip('[]').replace('+/-', ' \\pm ')
         else:
             out = conv.replace(' ', ' \\\\ ').strip('[]')
-        return print(out)
+        return out
