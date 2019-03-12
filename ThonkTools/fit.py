@@ -1,4 +1,4 @@
-def fit(x, y, func=lambda x: x, r=None, d=None):
+def fit(x, y, func=lambda x: x, p0=None, r=None, d=None):
     """
         fit takes data points calculates the curve fit and gives back
         the values with which the curve can be plotted
@@ -17,7 +17,7 @@ def fit(x, y, func=lambda x: x, r=None, d=None):
         ynew: y-value with which the fitted curve can be plotted.
     """
     from scipy.optimize import curve_fit
-    popt, pvoc = curve_fit(func, x, y)
+    popt, pvoc = curve_fit(func, x, y, p0=p0)
     params = popt.copy()
     if d == None:
         if r == None:
@@ -33,23 +33,35 @@ def fit(x, y, func=lambda x: x, r=None, d=None):
     return xnew, ynew
 
 
-def expfit(x, y, r=None, d=None):
+def expfit(x, y, p0=None, r=None, d=None):
     import numpy as np
-    return fit(x, y, func=lambda x, a, b, c: a * np.exp(b * x) + c, r=r, d=d)
+    return fit(x, y, func=lambda x, a, b, c: a * np.exp(b * x) + c, r=r, d=d, p0=p0)
 
 
-def linfit(x, y, r=None, d=None):
-    return fit(x, y, func=lambda x, a, b,: a * x + b, r=r, d=d)
+def linfit(x, y, p0=None, r=None, d=None):
+    return fit(x, y, func=lambda x, a, b,: a * x + b, r=r, d=d, p0=p0)
 
 
-def grfit(x, y, r=None, d=None):
+def grfit(x, y, p0=None, r=None, d=None):
     import numpy as np
-    return fit(x, y, func=lambda x, s, b, k: s - (s - b) * np.exp(-k * x), r=r, d=d)
+    return fit(x, y, func=lambda x, s, b, k: s - (s - b) * np.exp(-k * x), r=r, d=d, p0=p0)
 
 
-def logfit(x, y, r=None, d=None):
+def logfit(x, y, p0=None, r=None, d=None):
     import numpy as np
-    return fit(x, y, func=lambda x, L, k, x_0: L / (1 + np.exp(-k * (x - x0))), r=r, d=d)
+    return fit(x, y, func=lambda x, L, k, x_0: L / (1 + np.exp(-k * (x - x0))), r=r, d=d, p0=p0)
+
+
+def gausfit(x, y, p0=None, r=None, d=None):
+    import numpy as np
+    return fit(x, y, func=lambda x, mu, sigma, B, A: A * np.e ** ((-1 * (x - mu) ** 2) / (2 * sigma ** 2)) + B, r=r,
+               d=d, p0=p0)
+
+
+def poisfit(x, y, p0=None, r=None, d=None):
+    import numpy as np
+    from math import factorial
+    return fit(x, y, func=lambda x, mu: 1 / (factorial(x)) * mu ** x * np.exp(-mu)q, r=r, d=d, p0=p0)
 
 
 def fit_pm(x, y, func=lambda x: x):

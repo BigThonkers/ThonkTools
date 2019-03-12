@@ -5,3 +5,4 @@ from ThonkTools.helpers_2 import *
 from ThonkTools.textools import *
 from ThonkTools.x import *
 from ThonkTools.fit import *
+from ThonkTools.extractor import *
