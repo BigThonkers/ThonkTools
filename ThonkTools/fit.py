@@ -39,6 +39,7 @@ def expfit(x, y, p0=None, r=None, d=None):
 
 
 def linfit(x, y, p0=None, r=None, d=None):
+    import numpy as np
     return fit(x, y, func=lambda x, a, b,: a * x + b, r=r, d=d, p0=p0)
 
 
