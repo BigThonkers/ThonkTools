@@ -22,14 +22,14 @@ def fit(x, y, func=lambda x: x, p0=None, r=None, d=None):
     params = popt.copy()
     if d == None:
         if r == None:
-            xnew = np.arange(x[0], x[-1], np.abs((x[-1] - x[0]) / 100))
+            xnew = np.arange(min(x), max(x), np.abs((max(x) - min(x)) / 100))
         else:
-            xnew = np.arange(x[0], x[-1], r)
+            xnew = np.arange(min(x), max(x), r)
     else:
         if r == None:
-            xnew = np.arange(d[0], d[1], np.abs((x[-1] - x[0]) / 100))
+            xnew = np.arange(min(d), max(d), np.abs((max(x) - min(x)) / 100))
         else:
-            xnew = np.arange(d[0], d[1], r)
+            xnew = np.arange(min(d), max(d), r)
     ynew = func(xnew, *params)
     return xnew, ynew
 
@@ -81,6 +81,7 @@ def fit_pm(x, y, func=lambda x: x):
     """
     from scipy.optimize import curve_fit
     from uncertainties import unumpy as unp
+    import numpy as np
     popt, pcov = curve_fit(func, x, y)
     params = popt.copy()
     errors = np.sqrt(np.diag(pcov))
@@ -108,3 +109,13 @@ def grfit_pm(x, y):
 def logfit_pm(x, y):
     import numpy as np
     return fit_pm(x, y, func=lambda x, L, k, x_0: L / (1 + np.exp(-k * (x - x0))))
+
+
+def gausfit_pm(x, y):
+    import numpy as np
+    return fit_pm(x, y, func=lambda x, mu, sigma, B, A: A * np.e ** ((-1 * (x - mu) ** 2) / (2 * sigma ** 2)) + B)
+
+def poisfit_pm(x, y):
+    import numpy as np
+    from math import factorial
+    return fit_pm(x, y, func=lambda x, mu: 1 / (factorial(x)) * mu ** x * np.exp(-mu)q)
