@@ -16,6 +16,7 @@ def fit(x, y, func=lambda x: x, p0=None, r=None, d=None):
         xnew: x-value with which the fitted curve can be plotted.
         ynew: y-value with which the fitted curve can be plotted.
     """
+    import numpy as np
     from scipy.optimize import curve_fit
     popt, pvoc = curve_fit(func, x, y, p0=p0)
     params = popt.copy()
@@ -39,7 +40,6 @@ def expfit(x, y, p0=None, r=None, d=None):
 
 
 def linfit(x, y, p0=None, r=None, d=None):
-    import numpy as np
     return fit(x, y, func=lambda x, a, b,: a * x + b, r=r, d=d, p0=p0)
 
 
