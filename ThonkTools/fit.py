@@ -62,7 +62,7 @@ def gausfit(x, y, p0=None, r=None, d=None):
 def poisfit(x, y, p0=None, r=None, d=None):
     import numpy as np
     from math import factorial
-    return fit(x, y, func=lambda x, mu: 1 / (factorial(x)) * mu ** x * np.exp(-mu)q, r=r, d=d, p0=p0)
+    return fit(x, y, func=lambda x, mu: 1 / (factorial(x)) * mu ** x * np.exp(-mu), r=r, d=d, p0=p0)
 
 
 def fit_pm(x, y, func=lambda x: x):
@@ -118,4 +118,4 @@ def gausfit_pm(x, y):
 def poisfit_pm(x, y):
     import numpy as np
     from math import factorial
-    return fit_pm(x, y, func=lambda x, mu: 1 / (factorial(x)) * mu ** x * np.exp(-mu)q)
+    return fit_pm(x, y, func=lambda x, mu: 1 / (factorial(x)) * mu ** x * np.exp(-mu))
