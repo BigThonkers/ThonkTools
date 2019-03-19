@@ -84,3 +84,21 @@ def wmean(x, ux):
         uxg = 1 / sqrt(sum(g))
         return xg, uxg
 
+
+def uarraysplit(x):
+    """takes an uncertainties uarray and returns the
+    tuple (values, errors)
+    -values: a numpy array that contains all the values
+        of your uncertainties uarray
+    -errors: a numpy array that contains all the errors
+        of your uncertainties uarray
+    """
+
+    values = []
+    errors = []
+    for i in range(len(x)):
+        values.append(x[i].nominal_value)
+        errors.append(x[i].std_dev)
+    values = np.asarray(values)
+    errors = np.asarray(errors)
+    return values, errors
