@@ -65,7 +65,7 @@ def poisfit(x, y, p0=None, r=None, d=None):
     return fit(x, y, func=lambda x, mu: 1 / (factorial(x)) * mu ** x * np.exp(-mu), r=r, d=d, p0=p0)
 
 
-def fit_pm(x, y, func=lambda x: x):
+def fit_pm(x, y, func=lambda x: x, p0=None):
     """
         fit_pm takes data points and makes an exponential curve fit. It returns
         the parameters with errors and the coefficient of determination
@@ -82,7 +82,7 @@ def fit_pm(x, y, func=lambda x: x):
     from scipy.optimize import curve_fit
     from uncertainties import unumpy as unp
     import numpy as np
-    popt, pcov = curve_fit(func, x, y)
+    popt, pcov = curve_fit(func, x, y, p0=p0)
     params = popt.copy()
     errors = np.sqrt(np.diag(pcov))
     r = np.array(y) - func(np.array(x), *params)
@@ -92,30 +92,30 @@ def fit_pm(x, y, func=lambda x: x):
     return unp.uarray(params, errors), R_2
 
 
-def expfit_pm(x, y):
+def expfit_pm(x, y, p0=None):
     import numpy as np
     return fit_pm(x, y, func=lambda x, a, b, c: a * np.exp(b * x) + c)
 
 
-def linfit_pm(x, y):
+def linfit_pm(x, y, p0=None):
     return fit_pm(x, y, func=lambda x, a, b,: a * x + b)
 
 
-def grfit_pm(x, y):
+def grfit_pm(x, y, p0=None):
     import numpy as np
     return fit_pm(x, y, func=lambda x, s, b, k: s - (s - b) * np.exp(-k * x))
 
 
-def logfit_pm(x, y):
+def logfit_pm(x, y, p0=None):
     import numpy as np
     return fit_pm(x, y, func=lambda x, L, k, x_0: L / (1 + np.exp(-k * (x - x0))))
 
 
-def gausfit_pm(x, y):
+def gausfit_pm(x, y, p0=None):
     import numpy as np
     return fit_pm(x, y, func=lambda x, mu, sigma, B, A: A * np.e ** ((-1 * (x - mu) ** 2) / (2 * sigma ** 2)) + B)
 
-def poisfit_pm(x, y):
+def poisfit_pm(x, y, p0=None):
     import numpy as np
     from math import factorial
     return fit_pm(x, y, func=lambda x, mu: 1 / (factorial(x)) * mu ** x * np.exp(-mu))
