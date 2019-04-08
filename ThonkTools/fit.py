@@ -94,28 +94,28 @@ def fit_pm(x, y, func=lambda x: x, p0=None):
 
 def expfit_pm(x, y, p0=None):
     import numpy as np
-    return fit_pm(x, y, func=lambda x, a, b, c: a * np.exp(b * x) + c)
+    return fit_pm(x, y, func=lambda x, a, b, c: a * np.exp(b * x) + c, p0=p0)
 
 
 def linfit_pm(x, y, p0=None):
-    return fit_pm(x, y, func=lambda x, a, b,: a * x + b)
+    return fit_pm(x, y, func=lambda x, a, b,: a * x + b, p0=p0)
 
 
 def grfit_pm(x, y, p0=None):
     import numpy as np
-    return fit_pm(x, y, func=lambda x, s, b, k: s - (s - b) * np.exp(-k * x))
+    return fit_pm(x, y, func=lambda x, s, b, k: s - (s - b) * np.exp(-k * x), p0=p0)
 
 
 def logfit_pm(x, y, p0=None):
     import numpy as np
-    return fit_pm(x, y, func=lambda x, L, k, x_0: L / (1 + np.exp(-k * (x - x0))))
+    return fit_pm(x, y, func=lambda x, L, k, x_0: L / (1 + np.exp(-k * (x - x0))), p0=p0)
 
 
 def gausfit_pm(x, y, p0=None):
     import numpy as np
-    return fit_pm(x, y, func=lambda x, mu, sigma, B, A: A * np.e ** ((-1 * (x - mu) ** 2) / (2 * sigma ** 2)) + B)
+    return fit_pm(x, y, func=lambda x, mu, sigma, B, A: A * np.e ** ((-1 * (x - mu) ** 2) / (2 * sigma ** 2)) + B, p0=p0)
 
 def poisfit_pm(x, y, p0=None):
     import numpy as np
     from math import factorial
-    return fit_pm(x, y, func=lambda x, mu: 1 / (factorial(x)) * mu ** x * np.exp(-mu))
+    return fit_pm(x, y, func=lambda x, mu: 1 / (factorial(x)) * mu ** x * np.exp(-mu), p0=p0)
