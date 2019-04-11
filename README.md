@@ -22,7 +22,7 @@ Hat tip to my m'lady
 
 ## Dependencies
 
-Most functions only require basic Python and numpy. Linear regression additionally requires matplotlib.pyplot and scipy.optimize. Ideally, one should also have uncertainties installed. Every function should also be usable without uncertainties. 
+Most functions only require basic Python and numpy. Linear regression additionally requires matplotlib.pyplot and scipy.optimize. Ideally, one should also have uncertainties installed. Every function should also be usable without uncertainties (fit_pm currently isn't). 
 
 ## Functions
 
@@ -103,5 +103,9 @@ $ git clone https://github.com/BigThonkers/ThonkTools.git
 $ cd ThonkTools
 $ pip install .
 ```
-You can also just put this in the right directory. I've yet to put this in pip's repository.
+or
+``` sh
+$ pip install git+https://github.com/BigThonkers/ThonkTools.git
+```
+The former, however, is probably better, as stability isn't exactly something you can expect from this package. You can also just put this in the right directory. I've yet to put this in pip's repository.
 Windows users can place the ThonkTools folder in appdata > Local > Programs > Python3.7 > site-packages or something like that.
