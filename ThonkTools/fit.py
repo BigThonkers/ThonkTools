@@ -1,6 +1,6 @@
 def fit(x, y, func=lambda x: x, p0=None, r=None, d=None):
     """
-        fit takes data points calculates the curve fit and gives back
+        fit takes data points, calculates the curve fit, and gives back
         the values with which the curve can be plotted
         Parameters:
         -----------
@@ -80,7 +80,6 @@ def fit_pm(x, y, func=lambda x: x, p0=None):
               corresponding errors and the coefficient of determination.
     """
     from scipy.optimize import curve_fit
-    from uncertainties import unumpy as unp
     import numpy as np
     popt, pcov = curve_fit(func, x, y, p0=p0)
     params = popt.copy()
@@ -89,7 +88,11 @@ def fit_pm(x, y, func=lambda x: x, p0=None):
     rss = np.sum(r ** 2)
     tss = np.sum((y - np.mean(y)) ** 2)
     R_2 = 1 - (rss / tss)
-    return unp.uarray(params, errors), R_2
+    try:
+        from uncertainties import unumpy as unp
+        return unp.uarray(params, errors), R_2
+    except:
+        return np.array(params), np.array(errors), R_2
 
 
 def expfit_pm(x, y, p0=None):
@@ -113,7 +116,9 @@ def logfit_pm(x, y, p0=None):
 
 def gausfit_pm(x, y, p0=None):
     import numpy as np
-    return fit_pm(x, y, func=lambda x, mu, sigma, B, A: A * np.e ** ((-1 * (x - mu) ** 2) / (2 * sigma ** 2)) + B, p0=p0)
+    return fit_pm(x, y, func=lambda x, mu, sigma, B, A: A * np.e ** ((-1 * (x - mu) ** 2) / (2 * sigma ** 2)) + B,
+                  p0=p0)
+
 
 def poisfit_pm(x, y, p0=None):
     import numpy as np
