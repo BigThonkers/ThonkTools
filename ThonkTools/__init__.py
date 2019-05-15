@@ -1,5 +1,5 @@
-from ThonkTools.linreg import linreg
-from ThonkTools.mean import mean
+from ThonkTools.linreg import *
+from ThonkTools.mean import *
 from ThonkTools.helpers import *
 from ThonkTools.helpers_2 import *
 from ThonkTools.textools import *

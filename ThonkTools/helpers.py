@@ -1,77 +1,23 @@
-'''
-Return periodic time as angular frequency.
-'''
-
-
 def omega(T):
+    '''Return periodic time as angular frequency.'''
     import numpy as np
     return 2 * np.pi / T
 
 
-'''
-Calculate linear regression for polynomial a*x+b
-'''
-
-
-def b(x, y):
-    n = len(x)
-    return (sum(x ** 2) * sum(y) - sum(x) * sum(x * y)) / (n * sum(x ** 2) - (sum(x)) ** 2)
-
-
-def a(x, y):
-    n = len(x)
-    return (n * sum(x * y) - sum(x) * sum(y)) / (n * sum(x ** 2) - (sum(x)) ** 2)
-
-
-'''
-Calculate uncertainties for the above functions
-'''
-
-
-def s(x, y):
-    n = len(x)
-    import numpy as np
-    return np.sqrt((1 / (n - 2) * sum((y - b(x, y) - a(x, y) * x) ** 2)))
-
-
-def Db(x, y):
-    n = len(x)
-    import numpy as np
-    return s(x, y) * np.sqrt(sum(x ** 2) / (n * sum(x ** 2) - (sum(x)) ** 2))
-
-
-def Da(x, y):
-    n = len(x)
-    import numpy as np
-    return s(x, y) * np.sqrt(n / (n * sum(x ** 2) - (sum(x)) ** 2))
-
-
-'''
-Calculate t. The smaller t, the better. Optimal values are t < 2.
-'''
-
-
 def t(x, y):
+    '''Calculate t. The smaller t, the better. Optimal values are t < 2.'''
     import numpy as np
     return abs(x.n - y.n) / np.sqrt(x.s ** 2 + y.s ** 2)
 
 
-'''
-Uncertainty for time for certain devices. Apparently.
-'''
-
-
 def s_t(t, n):
+    '''Uncertainty for time for certain devices. Apparently.'''
     import numpy as np
     return (sum(t) / len(t)) / np.sqrt(n)
 
 
-'''
-Weighted mean. Stolen from Erik's helpers_2.py
-'''
-
-
 def wmean(x, ux):
+    '''Weighted mean. Stolen from Erik's helpers_2.py'''
     if len(x) != len(ux):
         raise ValueError("Nominal value and uncertainties must be of same length.")
     else:
@@ -91,8 +37,7 @@ def uarraysplit(x):
     -values: a numpy array that contains all the values
         of your uncertainties uarray
     -errors: a numpy array that contains all the errors
-        of your uncertainties uarray
-    """
+        of your uncertainties uarray"""
 
     values = []
     errors = []
@@ -102,3 +47,46 @@ def uarraysplit(x):
     values = np.asarray(values)
     errors = np.asarray(errors)
     return values, errors
+
+
+def txttoarr(fname, offset=0, *kwargs):
+    '''What used to be me csvreader, but Erik changed to disregard empty items.'''
+    import numpy as np
+    with open(fname, 'r') as myfile:
+        data = myfile.read().replace(',', '.').replace('\n', ',').replace('  ', ',').replace("\t", ",")
+    datarray = data.split(',')
+    output = []
+    for item in datarray:
+        if item != '':
+            output.append((item))
+    internal = []
+    for item in output[offset:]:
+        internal.append(float(item))
+    output = np.array(internal)
+    x = output[0::2]
+    y = output[1::2]
+    return [x, y]
+
+
+def findpositive(x, y):
+    '''Finds all positive values of y and gives you only the corresponding x and y values as lists.'''
+    i = 0
+    x_ = []
+    y_ = []
+    while y[i] >= 0:
+        x_.append(x[i])
+        y_.append(y[i])
+        i += 1
+    return x_, y_
+
+
+def findnegative(x, y):
+    '''Finds all negative values of y and gives you only the corresponding x and y values as lists.'''
+    i = 0
+    x_ = []
+    y_ = []
+    while y[i] < 0:
+        x_.append(x[i])
+        y_.append(y[i])
+        i += 1
+    return x_, y_

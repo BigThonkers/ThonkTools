@@ -8,54 +8,54 @@ def csvtex(fname,caption,index=None):
     print(data.iat[0,0],'&',data.iat[1,0],'\n\hline')
     print('\\bottomrule\n\end{{tabular}}\n\label{{Tab:{0}}}\n\end{{table}}'.format(tabnum))"""
 
-'''
-Takes a csv file and outputs it as LaTeX code for use in a LaTeX table.
-
-Filename must be input as a string, and can be of any file type. 
-
-Currently, the only option for style other than None is "nutrition".
-The nutrition style will output a LaTeX table in standard scientific table style, which resembles a nutrition table.
-If no style is set, only the values with tabs replaced by ampersands and new lines replaced with slashes will be output.
-Default is None.
-
-The caption and label are only useful for styles and will apply the caption and label to the output table code.
-These can easily be located and modified later on, though.
-Defaults are "CAPTION" and "Tab:X" in order to stand out and be a reminder that these should be changed.
-
-The index option is a planned feature to introduce index columns.
-Default is and will remain None.
-
-line_break toggles whether new lines should be started after slashes.
-Default is on.
-
-dec_comma toggles whether commas or dots should be used for decimals.
-Default is off, meaning dots are output.
-
-Example:
-    Let us assume a csv file including a total of six values evenly split across two rows:
-    
-    ~/Documents/file.txt reads:
-    a   b   c
-    d   e   f
-
-    The simplest scenario usage here would be:
-
-    import ThonkTools as TT
-    
-    TT.csvtex("~/Documents/file.txt")
-
-    output reads:
-    a & b & c \\
-    d & e & f
-
-
-TODO: 
-Index column option
-'''
-
 
 def csvtex(filename: str, style=None, caption="CAPTION", label="Tab:X", index=None, line_break=True, dec_comma=False):
+    '''
+    Takes a csv file and outputs it as LaTeX code for use in a LaTeX table.
+
+    Filename must be input as a string, and can be of any file type.
+
+    Currently, the only option for style other than None is "nutrition".
+    The nutrition style will output a LaTeX table in standard scientific table style, which resembles a nutrition table.
+    If no style is set, only the values with tabs replaced by ampersands and new lines replaced with slashes will be output.
+    Default is None.
+
+    The caption and label are only useful for styles and will apply the caption and label to the output table code.
+    These can easily be located and modified later on, though.
+    Defaults are "CAPTION" and "Tab:X" in order to stand out and be a reminder that these should be changed.
+
+    The index option is a planned feature to introduce index columns.
+    Default is and will remain None.
+
+    line_break toggles whether new lines should be started after slashes.
+    Default is on.
+
+    dec_comma toggles whether commas or dots should be used for decimals.
+    Default is off, meaning dots are output.
+
+    Example:
+        Let us assume a csv file including a total of six values evenly split across two rows:
+
+        ~/Documents/file.txt reads:
+        a   b   c
+        d   e   f
+
+        The simplest scenario usage here would be:
+
+        import ThonkTools as TT
+
+        TT.csvtex("~/Documents/file.txt")
+
+        output reads:
+        a & b & c \\
+        d & e & f
+
+
+    TODO:
+    Index column option
+    '''
     if line_break == False:
+
         with open(filename) as data:
             data = data.read().replace(',', '.').replace('\n', ' \\\\ ').replace('\t', ' & ')[:-4]
     elif line_break == True:
@@ -86,7 +86,7 @@ Tool to convert lists, arrays, and uarrays to LaTeX code. Very few options now, 
 '''
 
 
-def arrtex(array, row=True, column=False):
+def arrtex_simple(array, row=True, column=False):
     if row == True and column == False:
         conv = str(array)
         if '+' in conv:
@@ -101,3 +101,9 @@ def arrtex(array, row=True, column=False):
         else:
             out = conv.replace(' ', ' \\\\ ').strip('[]')
         return out
+
+
+def arrtex(arrays):
+    '''Idea: Unpack arrays, then do something like arrtex_simple for each of them
+    with rows for the first few and columns for the last.'''
+    return 'pls do dis'
