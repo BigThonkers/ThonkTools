@@ -63,9 +63,7 @@ def txttoarr(fname, offset=0, *kwargs):
     for item in output[offset:]:
         internal.append(float(item))
     output = np.array(internal)
-    x = output[0::2]
-    y = output[1::2]
-    return [x, y]
+    return output
 
 
 def findpositive(x, y):
