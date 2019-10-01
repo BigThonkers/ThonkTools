@@ -50,7 +50,7 @@ def uarraysplit(x):
 
 
 def txttoarr(fname, offset=0, *kwargs):
-    '''What used to be me csvreader, but Erik changed to disregard empty items.'''
+    '''What used to be my csvreader, but Erik changed to disregard empty items.'''
     import numpy as np
     with open(fname, 'r') as myfile:
         data = myfile.read().replace(',', '.').replace('\n', ',').replace('  ', ',').replace("\t", ",")
